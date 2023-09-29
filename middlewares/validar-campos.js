@@ -17,6 +17,3 @@ const validarCampos = (req, res = response, next) => {
 module.exports = {
     validarCampos
 }
-
-// termasAdmin
-// XwLNeLMqz3jt8gs4

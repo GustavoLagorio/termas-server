@@ -1,5 +1,5 @@
 const { response } = require('express');
-const Evento = require('../models/Evento')
+const Evento = require('../models/Reserva')
 
 
 const getEventos = async (req, res = response) => {
@@ -12,20 +12,33 @@ const getEventos = async (req, res = response) => {
     })
 }
 
+/*const getEventosById = async (req, res = response) => {
 
-const crearEvento = async (req, res = response) => {
+    const eventoId = req.params.id;
+    const uid = req.uid;
 
-    const evento = new Evento(req.body)
+    const eventos = await Evento.findById(eventoId)
+                                .populate('user', 'name')
+    res.json({
+        ok: true,
+        eventos
+    })
+}*/
+
+
+const crearReserva = async (req, res = response) => {
+
+    const reserva = new Reserva(req.body)
 
     try {
 
-        evento.user = req.uid
+        reserva.user = req.uid
 
-        const eventoGuardado = await evento.save()
+        const reservaGuardado = await reserva.save()
 
         res.json({
             ok: true,
-            evento: eventoGuardado
+            evento: reservaGuardado
         })
 
     } catch (error) {
@@ -38,7 +51,7 @@ const crearEvento = async (req, res = response) => {
 }
 
 
-const actualizarEvento = async (req, res = response) => {
+/*const actualizarEvento = async (req, res = response) => {
 
     const eventoId = req.params.id;
     const uid = req.uid;
@@ -83,7 +96,7 @@ const actualizarEvento = async (req, res = response) => {
             msg: 'Hable con el administrador'
         });
     }
-}
+}*/
 
 
 const eliminarEvento = async (req, res = response) => {
@@ -129,7 +142,7 @@ const eliminarEvento = async (req, res = response) => {
 
 module.exports = {
     getEventos,
-    crearEvento,
+    crearReserva,
     actualizarEvento,
     eliminarEvento
 }

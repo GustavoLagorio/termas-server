@@ -1,12 +1,25 @@
 const { Schema, model } = require("mongoose");
 
-const EventoSchema = Schema({
-    title: {
+const ReservaSchema = Schema({
+    nombre: {
         type: String,
         required: true
     },
-    notes: {
+    apellido: {
         type: String,
+        required: true
+    },
+    telefono: {
+        type: Number,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true
+    },
+    documento: {
+        type: Number,
+        required: true
     },
     start: {
         type: Date,
@@ -30,4 +43,4 @@ EventoSchema.method('toJSON', function() {
     return object;
 })
 
-module.exports = model('Evento', EventoSchema)
+module.exports = model('Reserva', ReservaSchema)
