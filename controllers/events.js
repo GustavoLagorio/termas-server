@@ -1,5 +1,5 @@
 const { response } = require('express');
-const Evento = require('../models/Reserva')
+const Evento = require('../models/Evento')
 
 
 const getEventos = async (req, res = response) => {
@@ -26,19 +26,19 @@ const getEventos = async (req, res = response) => {
 }*/
 
 
-const crearReserva = async (req, res = response) => {
+const crearEvento = async (req, res = response) => {
 
-    const reserva = new Reserva(req.body)
+    const evento = new Evento(req.body)
 
     try {
 
-        reserva.user = req.uid
+    evento.user = req.uid
 
-        const reservaGuardado = await reserva.save()
+        const eventoGuardado = await evento.save()
 
         res.json({
             ok: true,
-            evento: reservaGuardado
+            evento: eventoGuardado
         })
 
     } catch (error) {
@@ -51,7 +51,7 @@ const crearReserva = async (req, res = response) => {
 }
 
 
-/*const actualizarEvento = async (req, res = response) => {
+const actualizarEvento = async (req, res = response) => {
 
     const eventoId = req.params.id;
     const uid = req.uid;
@@ -96,7 +96,7 @@ const crearReserva = async (req, res = response) => {
             msg: 'Hable con el administrador'
         });
     }
-}*/
+}
 
 
 const eliminarEvento = async (req, res = response) => {
@@ -142,7 +142,7 @@ const eliminarEvento = async (req, res = response) => {
 
 module.exports = {
     getEventos,
-    crearReserva,
-    //actualizarEvento,
+    crearEvento,
+    actualizarEvento,
     eliminarEvento
 }
