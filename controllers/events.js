@@ -143,6 +143,6 @@ const eliminarEvento = async (req, res = response) => {
 module.exports = {
     getEventos,
     crearReserva,
-    actualizarEvento,
+    //actualizarEvento,
     eliminarEvento
 }
