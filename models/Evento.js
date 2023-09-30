@@ -10,7 +10,7 @@ const EventoSchema = Schema({
         required: true
     },
     telefono: {
-        type: Number,
+        type: String,
         required: true
     },
     email: {
@@ -18,15 +18,15 @@ const EventoSchema = Schema({
         required: true
     },
     documento: {
-        type: Number,
+        type: String,
         required: true
     },
     startDate: {
-        type: Date,
+        type: String,
         required: true
     },
     endEnd: {
-        type: Date,
+        type: String,
         required: true
     },
     user: {
