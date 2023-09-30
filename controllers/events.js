@@ -16,6 +16,7 @@ const getEventos = async (req, res = response) => {
 const getEventosByBungalowId = async (req, res = response) => {
 
     const { bungalow } = req.query;
+    
 
     if (bungalow) {
 
@@ -24,13 +25,14 @@ const getEventosByBungalowId = async (req, res = response) => {
 
         res.json({
             ok: true,
-            eventos
+            eventos            
         })
     } else {
 
         return res.status(400).json({
             ok: false,
-            mensaje: 'El ID del bungalow es requerido en la consulta.'
+            mensaje: 'El ID del bungalow es requerido en la consulta.',
+            log: console.log(bungalow)
         });
 
     }
