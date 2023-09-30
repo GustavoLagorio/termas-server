@@ -23,6 +23,7 @@ router.get('/', getEventos);
 //Crear un evento
 router.post('/',
 [
+    check('bungalow', 'El bungalow es obligatorio').not().isEmpty(),
     check('nombre', 'El nombre es obligatorio').not().isEmpty(),
     check('apellido', 'El apellido es obligatorio').not().isEmpty(),
     check('telefono', 'El telefono es obligatorio').not().isEmpty(),

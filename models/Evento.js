@@ -1,6 +1,9 @@
 const { Schema, model } = require("mongoose");
 
 const EventoSchema = Schema({
+    bungalow: {
+        type: Number,
+    },
     nombre: {
         type: String,
         required: true
