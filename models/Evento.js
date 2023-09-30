@@ -1,12 +1,25 @@
 const { Schema, model } = require("mongoose");
 
 const EventoSchema = Schema({
-    title: {
+    nombre: {
         type: String,
         required: true
     },
-    notes: {
+    apellido: {
         type: String,
+        required: true
+    },
+    telefono: {
+        type: Number,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true
+    },
+    documento: {
+        type: Number,
+        required: true
     },
     start: {
         type: Date,

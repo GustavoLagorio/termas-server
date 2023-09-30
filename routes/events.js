@@ -23,7 +23,11 @@ router.get('/', getEventos);
 //Crear un evento
 router.post('/',
 [
-    check('title', 'El título es obligatorio').not().isEmpty(),
+    check('nombre', 'El nombre es obligatorio').not().isEmpty(),
+    check('apellido', 'El apellido es obligatorio').not().isEmpty(),
+    check('telefono', 'El telefono es obligatorio').not().isEmpty(),
+    check('email', 'El email es obligatorio').not().isEmpty(),
+    check('documento', 'El documento es obligatorio').not().isEmpty(),
     check('start', 'La fecha de inicio es obligatoria').custom(isDate),
     check('end', 'La fecha de salida es obligatoria').custom(isDate),
     validarCampos
