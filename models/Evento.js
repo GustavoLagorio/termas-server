@@ -21,11 +21,11 @@ const EventoSchema = Schema({
         type: Number,
         required: true
     },
-    start: {
+    startDate: {
         type: Date,
         required: true
     },
-    end: {
+    endEnd: {
         type: Date,
         required: true
     },
