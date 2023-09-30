@@ -15,7 +15,7 @@ const getEventos = async (req, res = response) => {
 
 const getEventosByBungalowId = async (req, res = response) => {
 
-    const { bungalow } = req.query;
+    const { bungalow } = req.body;
     
 
     if (bungalow) {
