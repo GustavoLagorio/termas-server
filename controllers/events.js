@@ -5,25 +5,39 @@ const Evento = require('../models/Evento')
 const getEventos = async (req, res = response) => {
 
     const eventos = await Evento.find()
-                                .populate('user', 'name')
+        .populate('user', 'name')
+
     res.json({
         ok: true,
         eventos
     })
 }
 
-/*const getEventosById = async (req, res = response) => {
+const getEventosByBungalowId = async (req, res = response) => {
 
-    const eventoId = req.params.id;
-    const uid = req.uid;
+    const { bungalow } = req.query;
 
-    const eventos = await Evento.findById(eventoId)
-                                .populate('user', 'name')
-    res.json({
-        ok: true,
-        eventos
-    })
-}*/
+    if (bungalow) {
+
+        const eventos = await Evento.find({ bungalow: bungalow })
+            .populate('user', 'name')
+
+        res.json({
+            ok: true,
+            eventos
+        })
+    } else {
+
+        return res.status(400).json({
+            ok: false,
+            mensaje: 'El ID del bungalow es requerido en la consulta.'
+        });
+
+    }
+
+
+
+}
 
 
 const crearEvento = async (req, res = response) => {
@@ -32,7 +46,7 @@ const crearEvento = async (req, res = response) => {
 
     try {
 
-    evento.user = req.uid
+        evento.user = req.uid
 
         const eventoGuardado = await evento.save()
 
@@ -58,16 +72,16 @@ const actualizarEvento = async (req, res = response) => {
 
     try {
 
-        const evento = await Evento.findById( eventoId );
+        const evento = await Evento.findById(eventoId);
 
-        if( !evento ) {
+        if (!evento) {
             return res.status(404).json({
                 ok: false,
                 msg: 'Evento no existe con ese id'
             })
         }
 
-        if( evento.user.toString() !== uid) {
+        if (evento.user.toString() !== uid) {
             return res.status(401).json({
                 ok: false,
                 msg: 'No tiene permiso de editar el evento'
@@ -80,14 +94,14 @@ const actualizarEvento = async (req, res = response) => {
             user: uid
         }
 
-        const eventoActualizado = await Evento.findByIdAndUpdate( eventoId, nuevoEvento, {new: true} );
+        const eventoActualizado = await Evento.findByIdAndUpdate(eventoId, nuevoEvento, { new: true });
 
         res.json({
             ok: true,
             evento: eventoActualizado,
             msg: 'Evento actualizado'
         })
-       
+
 
     } catch (error) {
         console.log(error);
@@ -106,30 +120,30 @@ const eliminarEvento = async (req, res = response) => {
 
     try {
 
-        const evento = await Evento.findById( eventoId );
+        const evento = await Evento.findById(eventoId);
 
-        if( !evento ) {
+        if (!evento) {
             return res.status(404).json({
                 ok: false,
                 msg: 'Evento no existe con ese id'
             })
         }
 
-        if( evento.user.toString() !== uid) {
+        if (evento.user.toString() !== uid) {
             return res.status(401).json({
                 ok: false,
                 msg: 'No tiene permiso para eliminar el evento'
             })
 
-        }      
+        }
 
-        const eventoActualizado = await Evento.findByIdAndDelete( eventoId );
+        const eventoActualizado = await Evento.findByIdAndDelete(eventoId);
 
         res.json({
-            ok: true,            
+            ok: true,
             msg: 'Evento eliminado'
         })
-       
+
 
     } catch (error) {
         console.log(error);
@@ -142,6 +156,7 @@ const eliminarEvento = async (req, res = response) => {
 
 module.exports = {
     getEventos,
+    getEventosByBungalowId,
     crearEvento,
     actualizarEvento,
     eliminarEvento
