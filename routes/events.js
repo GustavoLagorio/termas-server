@@ -28,8 +28,8 @@ router.post('/',
     check('telefono', 'El telefono es obligatorio').not().isEmpty(),
     check('email', 'El email es obligatorio').not().isEmpty(),
     check('documento', 'El documento es obligatorio').not().isEmpty(),
-    check('start', 'La fecha de inicio es obligatoria').custom(isDate),
-    check('end', 'La fecha de salida es obligatoria').custom(isDate),
+    check('startDate', 'La fecha de inicio es obligatoria').custom(isDate),
+    check('endDate', 'La fecha de salida es obligatoria').custom(isDate),
     validarCampos
 ],
 crearEvento);
