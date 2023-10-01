@@ -19,9 +19,8 @@ const getEventosByBungalowId = async (req, res = response) => {
     
 
     if (bungalow) {
-        const bungalowNumero = parseInt(bungalow)
 
-        const eventos = await Evento.find({ bungalow: bungalowNumero })
+        const eventos = await Evento.find({ bungalow: bungalow })
             .populate('user', 'name')
 
         res.json({
