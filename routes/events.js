@@ -21,7 +21,7 @@ router.use( validarJWT )
 //Obtener Eventos
 router.get('/', getEventos);
 
-router.get('/', getEventosByBungalowId)
+router.get('/filtrar', getEventosByBungalowId)
 
 //Crear un evento
 router.post('/',
