@@ -25,7 +25,8 @@ const getEventosByBungalowId = async (req, res = response) => {
 
         res.json({
             ok: true,
-            eventos            
+            eventos,
+                        
         })
     } else {
 
