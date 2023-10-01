@@ -15,7 +15,7 @@ const getEventos = async (req, res = response) => {
 
 const getEventosByBungalowId = async (req, res = response) => {
 
-    const { bungalow } = req.query;
+    const { bungalow } = req.query.bungalow;
     
 
     if (bungalow) {
@@ -27,8 +27,6 @@ const getEventosByBungalowId = async (req, res = response) => {
         res.json({
             ok: true,
             eventos,
-            bungalow,
-            bungalowNumero
                         
         })
     } else {
