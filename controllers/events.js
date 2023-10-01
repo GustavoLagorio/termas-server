@@ -15,19 +15,31 @@ const getEventos = async (req, res = response) => {
 
 const getEventosByBungalowId = async (req, res = response) => {
 
-    const { bungalow } = req.query.bungalow;
-    
+    const { bungalow } = req.query;
+
 
     if (bungalow) {
+        
+        try {
+            const eventos = await Evento.find({ bungalow: bungalow })
+                .populate('user', 'name')
 
-        const eventos = await Evento.find({ bungalow: bungalow })
-            .populate('user', 'name')
+            res.json({
+                ok: true,
+                eventos,
 
-        res.json({
-            ok: true,
-            eventos,
-                        
-        })
+            })
+        } catch (error) {
+
+            console.error('Error al obtener eventos:', error);
+            res.status(500).json({
+                ok: false,
+                mensaje: 'Error al obtener eventos.'
+            });
+
+        }
+
+
     } else {
 
         return res.status(400).json({
