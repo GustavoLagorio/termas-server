@@ -11,7 +11,7 @@ const getEventos = async (req, res = response) => {
         ok: true,
         eventos
     })
-}
+};
 
 const getEventosByBungalowId = async (req, res = response) => {
 
@@ -46,12 +46,8 @@ const getEventosByBungalowId = async (req, res = response) => {
             mensaje: 'El ID del bungalow es requerido en la consulta.',
             log: console.log(bungalow)
         });
-
     }
-
-
-
-}
+};
 
 
 const crearEvento = async (req, res = response) => {
