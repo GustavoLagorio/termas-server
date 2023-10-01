@@ -19,6 +19,7 @@ const getEventosByBungalowId = async (req, res = response) => {
     
 
     if (bungalow) {
+        console.log(bungalow);
 
         const eventos = await Evento.find({ bungalow: bungalow })
             .populate('user', 'name')
