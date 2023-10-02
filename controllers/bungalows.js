@@ -15,8 +15,9 @@ const getBungalows = async (req, res = response) => {
 
 const getBungalowById = async (req, res = response) => {
 
-    const { id } = req.query;
-    const bungalowId = parseInt(id)
+    const { idBungalow } = req.query;
+    console.log(req.query);
+    const bungalowId = parseInt(idBungalow);
 
     if (bungalowId) {
 

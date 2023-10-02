@@ -14,7 +14,7 @@ const { crearBungalow, getBungalows, getBungalowById, actualizarBungalow } = req
 router.post(
     '/new',
     [ //middlewares
-        check('id', 'El Id es obligatorio').not().isEmpty(),
+        check('idBungalow', 'El Id es obligatorio').not().isEmpty(),
         check('nombre', 'El nombre es obligatorio').not().isEmpty(),
         check('descripcion', 'La descripcion es obligatoria').not().isEmpty(),
         check('imagenes', 'Las imagenes son obligatorias').not().isEmpty(),
