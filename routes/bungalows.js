@@ -28,7 +28,7 @@ router.post(
 
 router.get('/', getBungalows);
 
-router.get('/filtrar', getBungalowById)
+router.get('/:idBungalow', getBungalowById)
 
 router.put('/', actualizarBungalow)
 
