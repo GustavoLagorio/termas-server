@@ -22,7 +22,7 @@ const getBungalowById = async (req, res = response) => {
     if (bungalowId) {
 
         try {
-            const bungalow = await Bungalow.find({ id: bungalowId })
+            const bungalow = await Bungalow.find({ idBungalow: bungalowId })
                 .populate('user', 'name')
 
             res.json({
