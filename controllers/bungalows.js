@@ -15,17 +15,18 @@ const getBungalows = async (req, res = response) => {
 
 const getBungalowById = async (req, res = response) => {
 
-    const { bungalow } = req.query;
+    const { id } = req.query;
+    const bungalowId = parseInt(id)
 
-    if (bungalow) {
+    if (bungalowId) {
 
         try {
-            const bungalows = await Bungalow.find({ id: bungalow })
+            const bungalow = await Bungalow.find({ id: bungalowId })
                 .populate('user', 'name')
 
             res.json({
                 ok: true,
-                bungalows,
+                bungalow,
 
             })
         } catch (error) {
