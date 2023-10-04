@@ -78,7 +78,8 @@ const crearBungalow = async (req, res = response) => {
 
 const actualizarBungalow = async (req, res = response) => {
 
-    const bungalowId = req.params.id;
+    const { idBungalow } = req.params;
+    const bungalowId = parseInt(idBungalow);
     const uid = req.uid;
 
     try {
