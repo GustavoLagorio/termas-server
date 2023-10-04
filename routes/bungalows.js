@@ -30,6 +30,8 @@ router.get('/', getBungalows);
 
 router.get('/:idBungalow', getBungalowById)
 
-router.put('/:idBungalow', actualizarBungalow)
+router.put('/precio/:idBungalow', [validarJWT, validarCampos], actualizarBungalow)
+
+router.put('/desc/:idBungalow', [validarJWT, validarCampos], actualizarBungalow)
 
 module.exports = router;

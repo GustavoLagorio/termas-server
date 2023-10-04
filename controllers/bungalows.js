@@ -81,10 +81,16 @@ const actualizarBungalow = async (req, res = response) => {
     const { idBungalow } = req.params;
     const bungalowId = parseInt(idBungalow);
     const uid = req.uid;
+    console.log(req.body);
 
     try {
+        console.log('hola', req.body);
 
-        const bungalow = await Bungalow.findById(bungalowId);
+        const bungalow = await Bungalow.findOneAndUpdate(
+            { idBungalow: bungalowId },
+            { ...req.body, user: uid }, // Actualiza los datos del bungalow con los datos del cuerpo de la solicitud y el usuario (uid)
+            { new: true }
+        );
 
         if (!bungalow) {
             return res.status(404).json({
@@ -93,20 +99,12 @@ const actualizarBungalow = async (req, res = response) => {
             })
         }
 
-        if (bungalow.user.toString() !== uid) {
-            return res.status(401).json({
-                ok: false,
-                msg: 'No tiene permiso de editar el bungalow'
-            })
-
-        }
-
         const nuevoBungalow = {
             ...req.body,
             user: uid
         }
 
-        const bungalowActualizado = await Bungalow.findByIdAndUpdate(bungalowId, nuevoBungalow, { new: true });
+        const bungalowActualizado = await Bungalow.findOneAndUpdate({ idBungalow: bungalowId }, nuevoBungalow, { new: true });
 
         res.json({
             ok: true,
