@@ -105,7 +105,7 @@ const actualizarBungalow = async (req, res = response) => {
             user: uid
         }
 
-        const bungalowActualizado = await Bungalow.findByIdAndUpdate(bungalowId, nuevobungalow, { new: true });
+        const bungalowActualizado = await Bungalow.findByIdAndUpdate(bungalowId, nuevoBungalow, { new: true });
 
         res.json({
             ok: true,
