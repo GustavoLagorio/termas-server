@@ -38,7 +38,7 @@ const EventoSchema = Schema({
     patente: {
         type: String,
     },
-    pagado: {
+    pago: {
         type: Number,
         required: true
     },
