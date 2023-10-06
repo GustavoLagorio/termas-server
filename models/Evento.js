@@ -45,12 +45,6 @@ const EventoSchema = Schema({
     notas: {
         type: String,
     },
-    rangeDates: [{
-        date: {
-            type: Date,
-            required: true
-        }
-    }],
     user: {
         type: Schema.Types.ObjectId,
         ref: 'Usuario',
