@@ -25,10 +25,18 @@ const BungalowSchema = Schema({
         type: Array,
         required: true
     },
-    precio: {
-        type: Number,
-        required: true
-    },
+    precio: [{
+        
+        ocupantes: {
+            type: Number,
+            required: true
+        },
+
+        costo: {
+            type: Number,
+            reqired: true
+        }
+    }],
     user: {
         type: Schema.Types.ObjectId,
         ref: 'Usuario',
