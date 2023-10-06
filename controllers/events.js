@@ -53,6 +53,7 @@ const getEventosByBungalowId = async (req, res = response) => {
 const crearEvento = async (req, res = response) => {
 
     const evento = new Evento(req.body)
+    console.log(req.body);
 
     try {
 
@@ -64,6 +65,8 @@ const crearEvento = async (req, res = response) => {
             ok: true,
             evento: eventoGuardado
         })
+
+        console.log(response);
 
     } catch (error) {
         console.log(error);
