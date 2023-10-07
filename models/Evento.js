@@ -1,7 +1,7 @@
 const { Schema, model } = require("mongoose");
 
 const EventoSchema = Schema({
-    bungalowId: {
+    idBungalow: {
         type: Number,
         required: true
     },
