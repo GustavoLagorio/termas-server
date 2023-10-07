@@ -15,12 +15,12 @@ const getEventos = async (req, res = response) => {
 
 const getEventosByBungalowId = async (req, res = response) => {
 
-    const { bungalow } = req.query;
+    const { idBungalow } = req.query;
 
-    if (bungalow) {
+    if (idBungalow) {
         
         try {
-            const eventos = await Evento.find({ bungalow: bungalow })
+            const eventos = await Evento.find({ idBungalow: idBungalow })
                 .populate('user', 'name')
 
             res.json({
