@@ -84,7 +84,6 @@ const actualizarBungalow = async (req, res = response) => {
     console.log(req.body);
 
     try {
-        console.log('hola', req.body);
 
         const bungalow = await Bungalow.findOneAndUpdate(
             { idBungalow: bungalowId },
@@ -99,12 +98,12 @@ const actualizarBungalow = async (req, res = response) => {
             })
         }
 
-        const nuevoBungalow = {
+        /*const nuevoBungalow = {
             ...req.body,
             user: uid
         }
 
-        const bungalowActualizado = await Bungalow.findOneAndUpdate({ idBungalow: bungalowId }, nuevoBungalow, { new: true });
+        const bungalowActualizado = await Bungalow.findOneAndUpdate({ idBungalow: bungalowId }, nuevoBungalow, { new: true });*/
 
         res.json({
             ok: true,

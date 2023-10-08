@@ -13,6 +13,31 @@ const getEventos = async (req, res = response) => {
     })
 };
 
+const getClientes = async (req, res = response) => {
+    try {
+        const clientes = await Evento.distinct('documento', {
+            // Puedes agregar más condiciones de filtrado aquí si es necesario
+        });
+
+        // Ahora, para cada email único, obtén el primer documento correspondiente
+        const reservas = await Promise.all(clientes.map(async (documento) => {
+            const reserva = await Evento.findOne({ documento }, 'nombre apellido telefono');
+            return reserva;
+        }));
+
+        res.json({
+            ok: true,
+            clientes: reservas
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            ok: false,
+            error: 'Error al obtener los datos del cliente'
+        });
+    }
+};
+
 const getEventosByBungalowId = async (req, res = response) => {
 
     const { idBungalow } = req.query;
@@ -169,6 +194,7 @@ const eliminarEvento = async (req, res = response) => {
 
 module.exports = {
     getEventos,
+    getClientes,
     getEventosByBungalowId,
     crearEvento,
     actualizarEvento,
