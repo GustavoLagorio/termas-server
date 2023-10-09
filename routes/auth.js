@@ -9,7 +9,7 @@ const { validarCampos } = require('../middlewares/validar-campos');
 const { validarJWT } = require('../middlewares/validar-jwt');
 const router = Router();
 
-const { crearUsuario, loginUsuario, revalidarToken } = require('../controllers/auth');
+const { crearUsuario, loginUsuario, revalidarToken, tokenCliente } = require('../controllers/auth');
 
 
 router.post(
@@ -32,5 +32,7 @@ router.post(
     loginUsuario)
 
 router.get('/renew', validarJWT, revalidarToken)
+
+router.get('/cliente', tokenCliente)
 
 module.exports = router;
