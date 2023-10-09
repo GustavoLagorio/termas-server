@@ -5,7 +5,7 @@
 
 const { Router } = require('express');
 const { validarJWT } = require('../middlewares/validar-jwt');
-const { getEventos, getEventosByBungalowId, crearEvento, actualizarEvento, eliminarEvento, getClientes } = require('../controllers/events');
+const { getEventos, getEventosByBungalowId, crearEvento, actualizarEvento, eliminarEvento, getClientes, getEventosFechas } = require('../controllers/events');
 const { check } = require('express-validator');
 const { validarCampos } = require('../middlewares/validar-campos');
 const { isDate } = require('../helpers/isDate')
@@ -20,6 +20,8 @@ router.use( validarJWT )
 
 //Obtener Eventos
 router.get('/', getEventos);
+
+router.get('/fechas', getEventosFechas)
 
 router.get('/filtrar', getEventosByBungalowId)
 

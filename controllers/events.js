@@ -13,13 +13,22 @@ const getEventos = async (req, res = response) => {
     })
 };
 
+const getEventosFechas = async (req, res = response) => {
+
+    const eventos = await Evento.find({}, 'idBungalow starDate endDate')
+        .populate('user', 'name')
+
+    res.json({
+        ok: true,
+        eventos
+    })
+};
+
 const getClientes = async (req, res = response) => {
     try {
-        const clientes = await Evento.distinct('documento', {
-            // Puedes agregar más condiciones de filtrado aquí si es necesario
-        });
+        const clientes = await Evento.distinct('documento', {});
 
-        // Ahora, para cada email único, obtén el primer documento correspondiente
+        // Ahora, para cada documento único, obtén el primer documento correspondiente
         const reservas = await Promise.all(clientes.map(async (documento) => {
             const reserva = await Evento.findOne({ documento }, 'nombre apellido telefono');
             return reserva;
@@ -194,6 +203,7 @@ const eliminarEvento = async (req, res = response) => {
 
 module.exports = {
     getEventos,
+    getEventosFechas,
     getClientes,
     getEventosByBungalowId,
     crearEvento,
