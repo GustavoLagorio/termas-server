@@ -81,7 +81,6 @@ const actualizarBungalow = async (req, res = response) => {
     const { idBungalow } = req.params;
     const bungalowId = parseInt(idBungalow);
     const uid = req.uid;
-    console.log(req.body);
 
     try {
 
@@ -96,18 +95,11 @@ const actualizarBungalow = async (req, res = response) => {
                 ok: false,
                 msg: 'bungalow no existe con ese id'
             })
-        }
-
-        /*const nuevoBungalow = {
-            ...req.body,
-            user: uid
-        }
-
-        const bungalowActualizado = await Bungalow.findOneAndUpdate({ idBungalow: bungalowId }, nuevoBungalow, { new: true });*/
+        }        
 
         res.json({
             ok: true,
-            bungalow: bungalowActualizado,
+            bungalow: bungalow,
             msg: 'Bungalow actualizado'
         })
 
