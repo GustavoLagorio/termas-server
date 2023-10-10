@@ -113,6 +113,8 @@ const revalidarToken = async (req, res = response) => {
 const tokenCliente = (req, res) => {
 
     const token = generarTokenCliente();
+    console.log(token);
+    console.log('hola');
     res.json({ 
         ok: true, 
         token 
