@@ -18,9 +18,20 @@ const getEventosFechas = async (req, res = response) => {
     const eventos = await Evento.find({}, 'idBungalow startDate endDate')
         .populate('user', 'name')
 
+        const eventosDatos = eventos.map(evento => {
+
+            return {
+
+                idBungalow: evento.idBungalow,
+                startDate: evento.startDate,
+                endDate: evento.endDate
+
+            }
+        })
+
     res.json({
         ok: true,
-        eventos
+        eventosDatos
     })
 };
 
