@@ -1,7 +1,7 @@
 const { Schema, model } = require("mongoose");
 
 const BungalowSchema = Schema({
-    idBungalow: {
+    id: {
         type: Number,
         required: true
     },
