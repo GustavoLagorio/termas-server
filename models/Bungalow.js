@@ -13,12 +13,12 @@ const BungalowSchema = Schema({
         type: String,
         required: true
     },
-    imagenes: {
+    galeria: {
         type: Array,
         required: true
     },
-    galeria: {
-        type: Array,
+    ubicacion: {
+        type: String,
         required: true
     },
     comodidades: {
