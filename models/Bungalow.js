@@ -34,7 +34,7 @@ const BungalowSchema = Schema({
 
         costo: {
             type: Number,
-            reqired: true
+            required: true
         }
     }],
     user: {
