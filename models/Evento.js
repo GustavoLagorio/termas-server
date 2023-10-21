@@ -21,8 +21,7 @@ const EventoSchema = Schema({
         required: true
     },
     email: {
-        type: String,
-        required: true
+        type: String
     },
     documento: {
         type: Number,
